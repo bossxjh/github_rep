@@ -8,11 +8,12 @@
 
 
 #暂定的模型：clip，openvla，pi0（pi0.5）,diffusion policy
-#标准格式：libero/robotwin的格式
+#支持的数据集有：
+#标准格式：如果要增加数据：libero/robotwin的格式
 #数据预处理？（其实没必要，待定吧）
 #融合模块？
 
 
 #指标计算的代码实现
-
+#主要是SRCC,PLCC,KRCC三者和真值之间的相关性
 
