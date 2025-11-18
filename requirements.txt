@@ -1,0 +1,8 @@
+numpy
+torch
+pillow
+opencv-python
+h5py
+tqdm
+decord
+transformers

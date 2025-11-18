@@ -5,16 +5,22 @@
 #用数据集特征得到数据集多样性和可学性
 
 
-
-
 #暂定的模型：clip，openvla，pi0（pi0.5）,diffusion policy
 #支持的数据集有：
 #标准格式：如果要增加数据：libero/robotwin的格式
 #数据预处理？（其实没必要，待定吧）
 #融合模块？
 
-
 #指标计算的代码实现
 #主要是SRCC,PLCC,KRCC三者和真值之间的相关性
+from dataeval.api import extract_features
 
-#test
+if __name__ == "__main__":
+    dataset_path = "/Volumes/T7/数据集/具身/NYU_opening_door/handle/val_all"
+    for feat in extract_features("clip", "nyu_opening_door", dataset_path, num_frames=1):
+        print(feat.shape)
+
+
+
+
+
