@@ -20,7 +20,7 @@ from dataeval.api import extract_features
 
 if __name__ == "__main__":
     dataset_path = "/Volumes/T7/数据集/具身/NYU_opening_door/handle/val_all"
-    for feat in extract_features("pi0.5", "nyu_opening_door", dataset_path, num_frames=1):
+    for feat in extract_features("pi0.5", "nyu_opening_door", dataset_path, num_frames=1,batch_size=16):
         print(feat.shape)
 
 
