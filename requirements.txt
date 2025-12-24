@@ -6,3 +6,7 @@ h5py
 tqdm
 decord
 transformers
+
+# 用openvla的话
+pip install sentencepiece
+

@@ -4,7 +4,6 @@
 #加载模型对应的视觉头，并且提取数据集特征【默认只包含图像输入，还可以选择加入state和task特征进行融合】
 #用数据集特征得到数据集多样性和可学性
 
-
 #暂定的模型：clip，openvla，pi0（pi0.5）,diffusion policy
 #支持的数据集有：
 #标准格式：如果要增加数据：libero/robotwin的格式
@@ -13,11 +12,15 @@
 
 #指标计算的代码实现
 #主要是SRCC,PLCC,KRCC三者和真值之间的相关性
+
+
+# scripts/main.py
+# python -m scripts.main
 from dataeval.api import extract_features
 
 if __name__ == "__main__":
     dataset_path = "/Volumes/T7/数据集/具身/NYU_opening_door/handle/val_all"
-    for feat in extract_features("clip", "nyu_opening_door", dataset_path, num_frames=1):
+    for feat in extract_features("pi0.5", "nyu_opening_door", dataset_path, num_frames=1):
         print(feat.shape)
 
 
