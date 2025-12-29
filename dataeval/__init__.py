@@ -1,3 +1,3 @@
-from .api import extract_features
+from .api import extract_features, extract_features_with_metadata
 
-__all__ = ["extract_features"]
+__all__ = ["extract_features", "extract_features_with_metadata"]

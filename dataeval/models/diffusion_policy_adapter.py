@@ -7,7 +7,7 @@ import numpy as np
 from PIL import Image
 
 # 默认 ImageNet 权重路径
-IMAGENET_WEIGHT_PATH = "/mnt/shared-storage-user/xiaojiahao/trans/xiaojiahao/project/github_rep/checkpoint/resnet18-f37072fd.pth"
+IMAGENET_WEIGHT_PATH = "/Volumes/T7/项目/具身数据评测/github_rep/checkpoint/resnet18-f37072fd.pth"
 
 class SpatialSoftmax2d(nn.Module):
     """Spatial Softmax，将 [B,C,H,W] -> [B,C*2]"""

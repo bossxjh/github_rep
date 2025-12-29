@@ -27,4 +27,3 @@ def parse_libero(dataset_path, num_frames=3):
 
                 sampled_frames = frames_h5[idx]  # 直接从 HDF5 里读取
                 yield sampled_frames
-
