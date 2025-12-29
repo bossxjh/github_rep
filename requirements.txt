@@ -1,12 +1,17 @@
 numpy
 torch
+torchvision
 pillow
 opencv-python
 h5py
 tqdm
 decord
 transformers
+sentencepiece
+protobuf
+tensorflow
 
 # 用openvla的话
-pip install sentencepiece
+#pip install sentencepiece
+#clip
 
