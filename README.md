@@ -21,7 +21,6 @@ feature_extractor/
 dataeval/
 ├── api.py          ← 对外统一接口（最重要）
 ├── sampling.py     ← 数据采样策略
-├── extractors.py   ← 特征提取抽象
 ├── models.py       ← 模型注册 / 适配
 ├── models/
 │   └── openvla.py  ← OpenVLA 具体实现

@@ -2,13 +2,18 @@ import numpy as np
 import random
 
 # npz 文件路径
-npz_path = "/Volumes/T7/项目/具身数据评测/github_rep/feature/libero_diffusion_policy_nf3_bs16.npz"
+# npz_path = "/Volumes/T7/项目/具身数据评测/github_rep/feature/libero_spatial_clip_nf3_bs16.npz"
+npz_path = "/Volumes/T7/项目/具身数据评测/features/Libero Spatial.npz"
 
 # 加载 npz
 data = np.load(npz_path, allow_pickle=True)
 
 print("包含的 key:")
 print(list(data.keys()))
+
+
+
+
 
 # 查看一些基本信息
 print("\nfeatures shape:", data['features'].shape)
