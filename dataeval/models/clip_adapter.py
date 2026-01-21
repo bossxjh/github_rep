@@ -7,8 +7,8 @@ from PIL import Image
 class CLIPAdapter:
     def __init__(self, device=None):
         self.device = device or ("cuda" if torch.cuda.is_available() else "cpu")
-        # self.model, self.preprocess = clip.load("ViT-B/32", device=self.device, download_root = "/mnt/shared-storage-user/xiaojiahao/trans/xiaojiahao/project/github_rep/checkpoint")
-        self.model, self.preprocess = clip.load("ViT-B/32", device=self.device)
+        self.model, self.preprocess = clip.load("ViT-B/32", device=self.device, download_root = "/mnt/shared-storage-user/xiaojiahao/trans/xiaojiahao/project/github_rep/checkpoint")
+        # self.model, self.preprocess = clip.load("ViT-B/32", device=self.device)
         self.model.eval()
 
     # def extract(self, frames):

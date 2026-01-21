@@ -2,6 +2,7 @@
 from dataeval.models import MODEL_ADAPTERS
 from dataeval.datasets import DATASET_PARSERS
 from dataeval.datasets_meta import DATASET_PARSERS_META
+from tqdm import tqdm
 
 def extract_features_with_metadata(model_name, dataset_name, dataset_path, num_frames=3, batch_size=16):
     """
@@ -18,36 +19,42 @@ def extract_features_with_metadata(model_name, dataset_name, dataset_path, num_f
     """
     parser = DATASET_PARSERS_META[dataset_name]
     adapter = MODEL_ADAPTERS[model_name]()
-    
+    #创建进度条，读取数据
     demo_features_list = parser(dataset_path, num_frames=num_frames)
     
+    total_demos = len(demo_features_list)
     all_features = []
     batch_frames = []
     batch_meta = []
 
-    for demo in demo_features_list:
-        batch_frames.append(demo["frames"])
-        batch_meta.append({
-            "task_id": demo["task_id"],
-            "task_length": demo["task_length"],
-            "demo_length": demo["demo_length"],
-            "task_description": demo["task_description"]
-        })
+    # 创建进度条，提取特征
+    with tqdm(total=total_demos, desc="Extracting features") as pbar:
+        for demo in demo_features_list:
+            batch_frames.append(demo["frames"])
+            batch_meta.append({
+                "task_id": demo["task_id"],
+                "task_length": demo["task_length"],
+                "demo_length": demo["demo_length"],
+                "task_description": demo["task_description"]
+            })
 
-        if len(batch_frames) == batch_size:
-            feats = adapter.extract_batch(batch_frames)  # 输出形状 [B, F]
+            if len(batch_frames) == batch_size:
+                feats = adapter.extract_batch(batch_frames)  # 输出形状 [B, F]
+                for f, meta in zip(feats, batch_meta):
+                    all_features.append({**meta, "features": f})
+                batch_frames.clear()
+                batch_meta.clear()
+                pbar.update(batch_size)  # 更新进度条
+
+        # 处理剩余 batch
+        if batch_frames:
+            feats = adapter.extract_batch(batch_frames)
             for f, meta in zip(feats, batch_meta):
                 all_features.append({**meta, "features": f})
-            batch_frames.clear()
-            batch_meta.clear()
-
-    # 处理剩余 batch
-    if batch_frames:
-        feats = adapter.extract_batch(batch_frames)
-        for f, meta in zip(feats, batch_meta):
-            all_features.append({**meta, "features": f})
+            pbar.update(len(batch_frames))  # 更新进度条
 
     return all_features
+
 
 
 

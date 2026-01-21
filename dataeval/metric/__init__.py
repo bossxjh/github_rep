@@ -1,3 +1,3 @@
 from .leanability import compute_leanability_from_npzdata
-
+from .diversity import compute_task_diversity_entropy
 

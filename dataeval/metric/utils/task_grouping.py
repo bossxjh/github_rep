@@ -9,9 +9,9 @@ def group_by_task(npzdata):
     demo_lengths = npzdata["demo_lengths"]          # (N,)
     task_descriptions = npzdata["task_descriptions"]# (N,)
 
-
-    N, T, D = features.shape
-    features = features.reshape(N, T*D)
+    if len(features.shape) == 3:
+        N, T, D = features.shape
+        features = features.reshape(N, T*D)
 
     task_groups = []
     print("features shape", features.shape)

@@ -11,6 +11,10 @@ sentencepiece
 protobuf
 tensorflow
 
+#计算learnability模块
+scikit-learn
+matplotlib
+
 # 用openvla的话
 #pip install sentencepiece
 #clip

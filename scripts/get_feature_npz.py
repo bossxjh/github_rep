@@ -5,15 +5,15 @@ from tqdm import tqdm
 import time
 
 if __name__ == "__main__":
-    dataset_path = "/Volumes/T7/数据集/具身/libero_spatial"
-    save_dir = "/Volumes/T7/项目/具身数据评测/github_rep/feature"
+    dataset_path = "/mnt/shared-storage-user/xiaojiahao/tos2/xiaojiahao/具身/libero_spatial"
+    save_dir = "/mnt/shared-storage-user/xiaojiahao/trans/xiaojiahao/project/github_rep/feature"
     os.makedirs(save_dir, exist_ok=True)
 
     # 配置
-    model_name = "clip"
-    dataset_name = "libero"
+    model_name = "openvla"
+    dataset_name = "libero-spatial"
     num_frames = 3
-    batch_size = 1
+    batch_size = 32
 
     start_time = time.time()
 

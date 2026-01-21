@@ -34,3 +34,4 @@ dataeval/
 
 
 运行测试：python -m scripts.main
+运行leanability：python -m scripts.test_leanability

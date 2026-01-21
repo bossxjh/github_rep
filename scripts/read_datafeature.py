@@ -3,7 +3,7 @@ import random
 
 # npz 文件路径
 # npz_path = "/Volumes/T7/项目/具身数据评测/github_rep/feature/libero_spatial_clip_nf3_bs16.npz"
-npz_path = "/Volumes/T7/项目/具身数据评测/features/Libero Spatial.npz"
+npz_path = "/mnt/shared-storage-user/xiaojiahao/trans/xiaojiahao/project/github_rep/feature/libero-spatial_openvla_nf3_bs32.npz"
 
 # 加载 npz
 data = np.load(npz_path, allow_pickle=True)

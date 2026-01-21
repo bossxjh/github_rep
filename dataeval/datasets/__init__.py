@@ -12,6 +12,11 @@ from .fractal import parse_fractal
 
 DATASET_PARSERS = {
     "libero": parse_libero,#官方的libero数据集格式：.h5文件或者.hdf5文件
+    "libero-goal": parse_libero,
+    "libero-object": parse_libero,
+    "libero-spatial": parse_libero,
+    "libero-10": parse_libero,
+    "libero-90": parse_libero,
     "bcz":parse_bcz,#bc-z数据集格式：
     "taco_play": parse_taco, #taco-play数据集格式：pickle文件
     "toto":parse_toto, #toto数据集格式：pickle文件

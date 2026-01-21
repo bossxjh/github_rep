@@ -7,8 +7,10 @@ from .learning_ease import compute_learning_ease_with_task_transfer
 
 def compute_leanability_from_npzdata(
     npzdata,
-    beta: float = 0.8,
-    sigma=None,
+    beta: float = 0.5,
+    sigma_task=0.001,               # 任务内样本相似度带宽（None 则用 0.001 保底）
+    sigma_center=0.001,              # 任务中心相似度带宽（None 则用 median heuristic）
+    pi_scale=0.01698373,
 ):
     # -------- load & group --------
     task_groups = group_by_task(npzdata)
@@ -29,7 +31,9 @@ def compute_leanability_from_npzdata(
     dataset_score, task_scores = compute_learning_ease_with_task_transfer(
         task_groups=task_groups,
         beta=beta,
-        sigma=sigma,
+        sigma_task=sigma_task,               # 任务内样本相似度带宽（None 则用 0.001 保底）
+        sigma_center=sigma_center,  
+        pi_scale=pi_scale,
     )
 
     return {
@@ -39,7 +43,8 @@ def compute_leanability_from_npzdata(
         },
         "num_tasks": len(task_groups),
         "beta": beta,
-        "sigma": sigma,
+        "sigma_task": sigma_task,
+        "sigma_center":sigma_center,
     }
 
 
